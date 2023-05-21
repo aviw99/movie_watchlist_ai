@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+    {%block content%}
+    <h1 style="margin-top: 60px; text-align: center;">In Theaters:</h1>
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); grid-gap: 20px;">
+        {% for movie in theaters %}
+            <div style="border: 1px solid #ccc; padding: 10px; text-align: center;">
+                <h3>{{movie.rank}}</h3>
+                <h2>{{movie.fullTitle}}</h2>
+                <img src="{{movie.image}}" style="width: 220px;">
+                <button>Add</button>
+            </div>       
+        {% endfor %}
+    </div>
+    {%endblock%}
+
+
+

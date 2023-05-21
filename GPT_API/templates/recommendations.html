@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+    {%block content%}
+    <div style="margin-top: 80px; text-align: center;">
+
+        <form method="POST" action="{% url 'gpt_recommend' %}">
+            {% csrf_token %}
+            <textarea name="input_text" rows="2" cols="40" placeholder="Enter your search preferences in order to get AI generated recommendations"
+            ></textarea>
+            <br><br>
+            <button type="submit">Generate Recommendation with AI</button>
+        </form>
+
+        {% if movies %}
+            <br>
+            <div style="margin: 0 36.5% 0 36.5%; border: white solid 1px; border-radius: 2%;">
+                <h5>User Prompt: <small>"{{ input_text|safe }}"</small></h5>
+            </div><br><hr style="margin: 0 8% 0 8%"><br>
+            <h5><small><i>Keep in mind that AI isn't perfect, and it may generate suggestions that aren't based on your parameters</i></small></h5>
+            <h5>AI Generated Results:</h5>
+            <div style="display: grid; grid-template-columns: repeat(1, 1fr); border: white solid 1px; border-radius: 20%;margin: 0 25% 0 25%">
+                {% for movie in movies %}
+                    <div style="border: 1px solid #ccc; padding: 10px; margin: 10px text-align: center;">
+                        <h2>{{movie.title}}</h2>
+                        <div style="display: flex">
+                            <p style="margin: 10px 20px 0 20px;">{{ movie.description }}</p>
+                            <img src="{{movie.image}}" style="width: 220px;">
+                            <button style="height: 30px;margin-top: 10px; margin-left: 10px;">Add</button>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+
+    </div>
+    
+    {%endblock%}

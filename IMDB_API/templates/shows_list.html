@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+    {%block content%}
+    <h1 style="margin-top: 60px; text-align: center;">Shows:</h1>
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); grid-gap: 20px;">
+        {% for show in shows %}
+            <div style="border: 1px solid #ccc; padding: 10px; text-align: center;">
+                <h3>{{show.rank}}</h3>
+                <h2>{{show.fullTitle}}</h2>
+                <img src="{{show.image}}" style="width: 220px;">
+                <button>Add</button>
+            </div>       
+        {% endfor %}
+    </div>
+    {%endblock%}
+
+
+
