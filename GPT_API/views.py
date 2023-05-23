@@ -2,6 +2,7 @@ from django.shortcuts import render
 import requests
 import openai
 import re
+import os
 import json
 
 
@@ -30,7 +31,7 @@ def recommend_view(request):
 
 def generate_text(input_text):
 
-    openai.api_key = ' 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'
+    openai.api_key = os.environ["OPENAI_API_KEY"]
     prompt = "Based on the following user input generate a url link for making API calls to the IMDB API" \
              "The url should be for movie recommendations or for tv show recommendations." \
              "If the user doesn't specify which, it should be for movies" \
