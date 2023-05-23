@@ -38,9 +38,7 @@ def shows_list_view(request):
 def search_results_view(request):
     if request.method == 'GET':
         search_query = request.GET.get('search_query')
-
-        # Make a request to the IMDb API
-        api_key = 'YOUR_API_KEY'  # Replace with your IMDb API key
+        api_key = 'k_kjg95dy6'
         url = f'https://imdb-api.com/en/API/SearchAll/{api_key}/{search_query}'
         response = requests.get(url)
         data = response.json()

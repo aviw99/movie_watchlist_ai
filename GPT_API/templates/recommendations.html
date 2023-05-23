@@ -4,8 +4,11 @@
 
         <form method="POST" action="{% url 'gpt_recommend' %}">
             {% csrf_token %}
-            <textarea name="input_text" rows="2" cols="40" placeholder="Enter your search preferences in order to get AI generated recommendations"
-            ></textarea>
+            <div>
+                <textarea name="input_text" rows="2" cols="40" placeholder="Enter your search preferences in order to get AI generated recommendations"
+                ></textarea>
+                <p style="text-align: center;"><i>Hint:<small>Your AI generated suggestions <br>will be better if you input specific<br> parameters rather than an actual<br> movie or TV show name</small></i></p>
+            </div>
             <br><br>
             <button type="submit">Generate Recommendation with AI</button>
         </form>
@@ -15,17 +18,22 @@
             <div style="margin: 0 36.5% 0 36.5%; border: white solid 1px; border-radius: 2%;">
                 <h5>User Prompt: <small>"{{ input_text|safe }}"</small></h5>
             </div><br><hr style="margin: 0 8% 0 8%"><br>
-            <h5><small><i>Keep in mind that AI isn't perfect, and it may generate suggestions that aren't based on your parameters</i></small></h5>
-            <h5>AI Generated Results:</h5>
+            <h5><small><i>Keep in mind that AI isn't perfect, and it may generate results that are inaccurate or unrelated to your parameters</i></small></h5>
+            <h5 style="color: #007dbe">AI Generated Results:</h5>
             <div style="display: grid; grid-template-columns: repeat(1, 1fr); border: white solid 1px; border-radius: 20%;margin: 0 25% 0 25%">
                 {% for movie in movies %}
                     <div style="border: 1px solid #ccc; padding: 10px; margin: 10px text-align: center;">
                         <h2>{{movie.title}}</h2>
                         <div style="display: flex">
-                            <p style="margin: 10px 20px 0 20px;">{{ movie.description }}</p>
+                            <div>
+                                <p style="margin: 10px 20px 0 20px;"><small>{{ movie.description }}</small></p>
+                                <p style="margin: 20px 20px 0 30px;">{{ description }}</p>
+                            </div>
+
                             <img src="{{movie.image}}" style="width: 220px;">
                             <button style="height: 30px;margin-top: 10px; margin-left: 10px;">Add</button>
                         </div>
+
                     </div>
                 {% endfor %}
             </div>

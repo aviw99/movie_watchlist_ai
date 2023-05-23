@@ -2,7 +2,7 @@
     {%block header%}
         {% load static %}
     <nav class="navbar navbar-expand-lg navbar-light bg-primary fixed-top" style="background: linear-gradient(to right, #ffffff, #ffffff); box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);">
-        <div class="container-fluid"">
+        <div class="container-fluid">
           <a class="navbar-brand" href="{%url 'homepage'%}"><img src="{% static 'icons/home.png' %}" style="width: 35px; margin-left: 10px; margin-right: 70px;"></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -10,7 +10,7 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item" style="margin-right: 70px;">
-                <a class="nav-link active" aria-current="page" href="{%url 'recommendations'%}">AI</a>
+                <a style="text-align: center;  color: #007dbe; " class="nav-link active" aria-current="page" href="{%url 'recommendations'%}">AI</a>
               </li>
               <li class="nav-item dropdown active" style="margin-right: 70px;">
                 <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -45,9 +45,9 @@
                     </ul>
                 </li>
             </ul>
-            <form class="d-flex" style="width: 350px;" action="{% url 'search' %}">
+            <form class="d-flex" style="width: 350px;" action="{% url 'search' %}" >
               <input class="form-control me-2" name="search_query" type="search" placeholder="Search Movie or TV Show" aria-label="Search">
-              <button style="margin-left: 20px" class="btn btn-outline-secondary" type="submit">Search</button>
+              <button style="margin-left: 20px;" class="btn btn-outline-secondary" type="submit">Search</button>
               <script>
                 function submitForm() {
                   var searchQuery = document.querySelector('input[name="search_query"]').value;
@@ -56,6 +56,11 @@
                 }
                 </script>
             </form>
+{#              <ul class="navbar-nav me-auto mb-2 mb-lg-0">#}
+{#                  <li class="nav-item" >#}
+{#                      <a class="nav-link active" aria-current="page"  href="{%url 'signup'%}">exit</a>#}
+{#                  </li>#}
+{#              </ul>#}
           </div>
         </div>
       </nav>
